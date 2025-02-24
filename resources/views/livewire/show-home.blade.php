@@ -80,12 +80,9 @@
         @if ($services->isNotEmpty())
         @php
         $x=1;
-
         @endphp
         @foreach ($services as $service )
        <x-service-card :service="$service" :x="$x"/>
-          
-     
         @php
         $x++;
         @endphp

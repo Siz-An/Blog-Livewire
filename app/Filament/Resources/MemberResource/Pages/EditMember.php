@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Filament\Resources\ServiceResource\Pages;
+namespace App\Filament\Resources\MemberResource\Pages;
 
-use App\Filament\Resources\ServiceResource;
+use App\Filament\Resources\MemberResource;
 use Filament\Actions;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\EditRecord;
 
-class EditService extends EditRecord
+class EditMember extends EditRecord
 {
-    protected static string $resource = ServiceResource::class;
+    protected static string $resource = MemberResource::class;
 
     protected function getHeaderActions(): array
     {
@@ -21,11 +21,12 @@ class EditService extends EditRecord
 {
     return $this->getResource()::getUrl('index');
 }
+
 protected function getSavedNotification(): ?Notification
 {
     return Notification::make()
         ->success()
-        ->title('Service Updated')
-        ->body('The Service has been Updated');
+        ->title('Member Updated')
+        ->body('The Member Updated successfully.');
 }
 }

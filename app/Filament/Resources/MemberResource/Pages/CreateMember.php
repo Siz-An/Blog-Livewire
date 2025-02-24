@@ -1,24 +1,27 @@
 <?php
 
-namespace App\Filament\Resources\ServiceResource\Pages;
+namespace App\Filament\Resources\MemberResource\Pages;
 
-use App\Filament\Resources\ServiceResource;
+use App\Filament\Resources\MemberResource;
 use Filament\Actions;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\CreateRecord;
 
-class CreateService extends CreateRecord
+class CreateMember extends CreateRecord
 {
-    protected static string $resource = ServiceResource::class;
+    protected static string $resource = MemberResource::class;
+
     protected function getRedirectUrl(): string
 {
     return $this->getResource()::getUrl('index');
 }
+
 protected function getCreatedNotification(): ?Notification
 {
     return Notification::make()
         ->success()
-        ->title('Service Created')
-        ->body('New service has been created.');
+        ->title('Member Created')
+        ->body('The Member has been created successfully.');
 }
 }
+
