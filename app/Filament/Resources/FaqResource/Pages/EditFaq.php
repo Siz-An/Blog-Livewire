@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Filament\Resources\CategoryResource\Pages;
+namespace App\Filament\Resources\FaqResource\Pages;
 
 use Filament\Actions;
+use App\Filament\Resources\FaqResource;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\EditRecord;
-use App\Filament\Resources\CategoryResource;
 
-class EditCategory extends EditRecord
+class EditFaq extends EditRecord
 {
-    protected static string $resource = CategoryResource::class;
+    protected static string $resource = FaqResource::class;
 
     protected function getHeaderActions(): array
     {
@@ -25,7 +25,7 @@ class EditCategory extends EditRecord
     {
         return Notification::make()
             ->success()
-            ->title('Category Edited')
-            ->body('Category Edited Successfully.');
+            ->title('Faq Edited')
+            ->body('Faq Edited Successfully.');
     }
 }

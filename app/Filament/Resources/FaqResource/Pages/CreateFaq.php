@@ -1,24 +1,25 @@
 <?php
 
-namespace App\Filament\Resources\CategoryResource\Pages;
+namespace App\Filament\Resources\FaqResource\Pages;
 
 use Filament\Actions;
+use App\Filament\Resources\FaqResource;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\CreateRecord;
-use App\Filament\Resources\CategoryResource;
 
-class CreateCategory extends CreateRecord
+class CreateFaq extends CreateRecord
 {
-    protected static string $resource = CategoryResource::class;
+    protected static string $resource = FaqResource::class;
     protected function getRedirectUrl(): string
     {
         return $this->getResource()::getUrl('index');
     }
+
     protected function getCreatedNotification(): ?Notification
     {
         return Notification::make()
             ->success()
-            ->title('Category Created')
-            ->body('Category Created Successfully.');
+            ->title('Faq Created')
+            ->body('Faq Created Successfully.');
     }
 }

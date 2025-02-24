@@ -8,15 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Member extends Model
 {
     use HasFactory;
-    protected $fillable = [
-        'name',
-        'designation',
-        'fb_url',
-        'x_url',
-        'linkdin',
-        'github',
-        'in_url',
-        'image',
-        'status',
-    ];
+   protected $fillable=[
+    'name',
+    'designation',
+    'fb_url',
+    'in_url',
+    'x_url',
+    'image',
+    'status',
+    'linkdin',
+    'github',
+   ];
 }

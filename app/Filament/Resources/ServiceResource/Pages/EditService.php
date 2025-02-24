@@ -4,8 +4,8 @@ namespace App\Filament\Resources\ServiceResource\Pages;
 
 use App\Filament\Resources\ServiceResource;
 use Filament\Actions;
-use Filament\Notifications\Notification;
 use Filament\Resources\Pages\EditRecord;
+use Filament\Notifications\Notification;
 
 class EditService extends EditRecord
 {
@@ -18,14 +18,14 @@ class EditService extends EditRecord
         ];
     }
     protected function getRedirectUrl(): string
-{
-    return $this->getResource()::getUrl('index');
-}
-protected function getSavedNotification(): ?Notification
-{
-    return Notification::make()
-        ->success()
-        ->title('Service Updated')
-        ->body('The Service has been Updated');
-}
+    {
+        return $this->getResource()::getUrl('index');
+    }
+    protected function getSavedNotification(): ?Notification
+    {
+        return Notification::make()
+            ->success()
+            ->title('Service Edited')
+            ->body('Service Edited Successfully.');
+    }
 }

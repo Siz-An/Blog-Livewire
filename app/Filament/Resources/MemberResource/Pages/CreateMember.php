@@ -4,24 +4,22 @@ namespace App\Filament\Resources\MemberResource\Pages;
 
 use App\Filament\Resources\MemberResource;
 use Filament\Actions;
-use Filament\Notifications\Notification;
 use Filament\Resources\Pages\CreateRecord;
+use Filament\Notifications\Notification;
 
 class CreateMember extends CreateRecord
 {
     protected static string $resource = MemberResource::class;
-
     protected function getRedirectUrl(): string
-{
-    return $this->getResource()::getUrl('index');
-}
+    {
+        return $this->getResource()::getUrl('index');
+    }
 
-protected function getCreatedNotification(): ?Notification
-{
-    return Notification::make()
-        ->success()
-        ->title('Member Created')
-        ->body('The Member has been created successfully.');
+    protected function getCreatedNotification(): ?Notification
+    {
+        return Notification::make()
+            ->success()
+            ->title('Member Created')
+            ->body('Member Created Successfully.');
+    }
 }
-}
-

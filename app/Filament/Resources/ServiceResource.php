@@ -2,21 +2,20 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\ServiceResource\Pages;
-use App\Filament\Resources\ServiceResource\RelationManagers;
-use App\Models\Service;
-use Faker\Provider\ar_EG\Text;
 use Filament\Forms;
-use Filament\Forms\Components\RichEditor;
-use Filament\Forms\Components\Select;
-use Filament\Forms\Components\TextInput;
-use Filament\Forms\Form;
-use Filament\Resources\Resource;
 use Filament\Tables;
+use App\Models\Service;
+use Filament\Forms\Form;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use Filament\Resources\Resource;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\RichEditor;
 use Illuminate\Database\Eloquent\Builder;
+use App\Filament\Resources\ServiceResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use App\Filament\Resources\ServiceResource\RelationManagers;
 
 class ServiceResource extends Resource
 {
@@ -29,14 +28,15 @@ class ServiceResource extends Resource
         return $form
             ->schema([
                 TextInput::make('title')->required(),
-                TextInput::make(name: 'icon_class')->label('Icon Type'),
+                TextInput::make('icon_class')
+                ->label('Icon Type'),
                 TextInput::make('short_desc')
                 ->label('Short Description')
                 ->required(),
                 RichEditor::make('description')->columnSpan(2),
-                Select::make('status')->options(
-                    ['1'=> 'Active','0'=> 'Block']
-                )
+                Select::make('status')->options([
+                    1=>'Active',0=>'Block']),
+
             ]);
     }
 
@@ -46,6 +46,8 @@ class ServiceResource extends Resource
             ->columns([
                 TextColumn::make('title'),
                 TextColumn::make('short_desc')->label('Short Description'),
+                TextColumn::make('description')->html(),
+
             ])
             ->filters([
                 //

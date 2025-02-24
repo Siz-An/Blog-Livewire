@@ -2,22 +2,22 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\CategoryResource\Pages;
-use App\Filament\Resources\CategoryResource\RelationManagers;
-use App\Models\Category;
 use Filament\Forms;
-use Filament\Forms\Components\Select;
-use Filament\Forms\Components\TextInput;
-use Filament\Forms\Form;
-use Filament\Resources\Resource;
 use Filament\Tables;
+use App\Models\Category;
+use Filament\Forms\Form;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
-use Filament\Forms\Set;
+use Filament\Resources\Resource;
+use Filament\Forms\Components\Select;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Forms\Components\TextInput;
+use Illuminate\Database\Eloquent\Builder;
+use App\Filament\Resources\CategoryResource\Pages;
+use Illuminate\Database\Eloquent\SoftDeletingScope;
+use App\Filament\Resources\CategoryResource\RelationManagers;
+use Filament\Forms\Set;
 use Illuminate\Support\Str;
-
+ 
 class CategoryResource extends Resource
 {
     protected static ?string $model = Category::class;
@@ -28,14 +28,16 @@ class CategoryResource extends Resource
     {
         return $form
             ->schema([
-                TextInput::make('name')->required()->placeholder('Name')
+                TextInput::make('name')
                 ->live(onBlur: true)
-                ->afterStateUpdated(fn (Set $set, ?string $state) => $set('slug', Str::slug($state))),
-            
-                TextInput::make('slug')->required()->placeholder('Slug'),
-                Select::make('status')->options(
-                    ['1'=> 'Active','0'=> 'Block']
-                )
+                ->afterStateUpdated(fn (Set $set, ?string $state) => $set('slug', Str::slug($state)))
+                ->required(),
+                TextInput::make('slug')->required(),
+                Select::make('status')->options([
+                    1=>'Active',
+                    0=>'Block'
+                ]),
+
             ]);
     }
 
@@ -43,8 +45,9 @@ class CategoryResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('name'),
-                TextColumn::make('slug'),
+                TextColumn::make('name')->placeholder('Enter the name'),
+                TextColumn::make('slug')->placeholder('Enter the slug'),
+
             ])
             ->filters([
                 //

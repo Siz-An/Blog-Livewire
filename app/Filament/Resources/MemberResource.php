@@ -2,23 +2,21 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\MemberResource\Pages;
-use App\Filament\Resources\MemberResource\RelationManagers;
-use App\Models\Member;
 use Filament\Forms;
 use Filament\Forms\Components\FileUpload;
-use Filament\Forms\Components\Select;
-use Filament\Forms\Components\TextInput;
-use Filament\Forms\Form;
-use Filament\Resources\Resource;
 use Filament\Tables;
-use Filament\Tables\Columns\ImageColumn;
-use Filament\Tables\Columns\TextColumn;
+use App\Models\Member;
+use Filament\Forms\Form;
 use Filament\Tables\Table;
+use Filament\Resources\Resource;
+use Filament\Forms\Components\Select;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Forms\Components\TextInput;
+use Filament\Tables\Columns\ImageColumn;
 use Illuminate\Database\Eloquent\Builder;
+use App\Filament\Resources\MemberResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-
-use function Laravel\Prompts\select;
+use App\Filament\Resources\MemberResource\RelationManagers;
 
 class MemberResource extends Resource
 {
@@ -31,18 +29,22 @@ class MemberResource extends Resource
         return $form
             ->schema([
                 TextInput::make('name')->required(),
-                TextInput::make('designation')->label('Designation')->required(),
-                TextInput::make('fb_url')->label('Facebook Url'),
-                TextInput::make('x_url')->label('X-Url'),
-                TextInput::make('linkdin')->label('Linkdin Url'),
-                TextInput::make('github')->label('Github Url'),
-                TextInput::make('in_url')->label('Instagram Url'),
+                TextInput::make('designation')->required(),
+                TextInput::make('fb_url')
+                ->url()->label('Facebook Url'),
+                TextInput::make('in_url')
+                ->url()->label('Instagram Url'),
+                TextInput::make('github')
+                ->url()->label('Github Url'),
+                TextInput::make('linkdin')
+                ->url()->label('Linkdin Url'),
+                TextInput::make('x_url')
+                ->url()->label('X Url'),
+                Select::make('status')->options([
+                    1=>'Active',
+                    0=>'Block'
+                ]),
                 FileUpload::make('image'),
-                Select::make('status')->options(
-                    ['1'=>'Active', '0'=>'Block']
-                ),
-
-
             ]);
     }
 
@@ -50,11 +52,16 @@ class MemberResource extends Resource
     {
         return $table
             ->columns([
-                ImageColumn::make('image')->width(100)->label('Image'),
                 TextColumn::make('name'),
-                TextColumn::make('designation')->label('Designation'),
+                ImageColumn::make('image')->width('100'),
+                TextColumn::make('designation')->html(),
+                TextColumn::make('fb_url')->label('Facebook Url'),
+                TextColumn::make('insta_url')->label('Instagram Url'),
+                TextColumn::make('x_url')->label('X Url'),
+                // TextColumn::make('status'),
 
-                
+
+
             ])
             ->filters([
                 //
