@@ -7,7 +7,7 @@
                     <ul class="list-inline breadcrumbs text-capitalize" style="font-weight:500">
                         <li class="list-inline-item"><a href="{{route('home')}}">Home</a>
                         </li>
-                        <li class="list-inline-item">/ &nbsp;Blog
+                        <li class="list-inline-item">/ &nbsp; <a href="{{route('blog')}}">Blog</a>
                         </li>
                     </ul>
                 </div>
@@ -40,48 +40,31 @@
                 <div class="col-lg-9">
                     <div class="me-lg-4">
                         <div class="row gy-5">
-                            @if ($articles->isNotEmpty())
-                            @foreach ($articles as $article)           
-                            <div class="col-md-6" data-aos="fade">
-                                <article class="blog-post">
-                                    <div class="post-slider slider-sm rounded">
-                                        {{-- <img loading="lazy" decoding="async" src="images/blog/post-4.jpg" alt="Post Thumbnail">   --}}
-                                    @if ($article->image != "")
-                                    <img loading="lazy" decoding="async" src="{{ asset('storage/'.$article->image) }}" alt="Post Thumbnail">
-                                    
-                                    @endif
-                                    </div>
-                                    <div class="pt-4">
-                                        <p class="mb-3">{{ \Carbon\Carbon::parse($article->created_at)
-                                        ->format('d M, Y') }}</p>
-                                        <h2 class="h4"><a class="text-black" href="blog-details.html">{{$article->title }}</a></h2>
-                                        </p> <a href="blog-details.html" class="text-primary fw-bold" aria-label="Read the full article by clicking here">Read More</a>
-                                    </div>
-                                </article>
-                            </div>
-                            @endforeach
+                            @if($articles->isNotEmpty())
+                                @foreach ($articles as $article)
+                                <div class="col-md-6" data-aos="fade">
+                                    <article class="blog-post">
+                                        <div class="post-slider slider-sm rounded">
+                                         @if ($article->image != '')
+                                         <img loading="lazy" decoding="async" src="{{ asset('storage/'.$article->image) }}" alt="Scarlet Pena"
+                                         class="rounded w-100 fixed-size" style="width: 300px; height: 332px; object-fit: contain;">                                             
+                                         @endif   
+                                        </div>
+                                        <div class="pt-4">
+                                            <p class="mb-3">{{\Carbon\Carbon::parse($article->created_at)
+                                                ->format('d M, Y')}}</p>
+                                            <h2 class="h4"><a wire:navigate class="text-black" href="{{route('blogDetail',$article->id)}}">{{$article->title}}</a></h2>
+                                           <a wire:navigate href="{{route('blogDetail',$article->id)}}" class="text-primary fw-bold" aria-label="Read the full article by clicking here">Read More</a>
+                                        </div>
+                                    </article>
+                                </div>
+ 
+                                @endforeach
                             @endif
-
+                            
+                           
                             <div class="col-12">
-                                <nav class="mt-4">
-                                    <!-- pagination -->
-                                    <nav class="mb-md-50">
-                                        <ul class="pagination justify-content-center">
-                                            <li class="page-item active "> <a href="blog.html" class="page-link">
-                            1
-                          </a>
-                                            </li>
-                                            <li class="page-item"> <a href="blog.html" class="page-link">
-                            2
-                          </a>
-                                            </li>
-                                            <li class="page-item">
-                                                <a class="page-link" href="blog.html" aria-label="Pagination Arrow"> <i class="fas fa-angle-right"></i>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </nav>
-                                </nav>
+                               {{$articles->links()}}
                             </div>
                         </div>
                     </div>
@@ -93,12 +76,13 @@
                         <ul class="list-unstyled widget-list">	
                             @if ($categories->isNotEmpty())
                             @foreach ($categories as $category)
-                            <li><a href="">{{ $category->name }}</a>
-                            </li>	
+                                <li>
+                                    <a wire:navigate href="{{ route('blog', ['categorySlug' => $category->slug]) }}">
+                                        {{ $category->name }} 
+                                    </a>
+                                </li>
                             @endforeach
-                            @endif		
-                           		
-
+                        @endif	
                         </ul>
                     </div>
                     <!-- tags -->
@@ -125,45 +109,26 @@
                     <div class="widget">
                         <h5 class="widget-title"><span>Latest Article</span></h5>
                         <!-- post-item -->
-                        <ul class="list-unstyled widget-list">
-                            <li class="d-flex widget-post align-items-center">
-                                <a class="text-black" href="/blog/elements/">
-                                    <div class="widget-post-image flex-shrink-0 me-3">
-                                        <img class="rounded" loading="lazy" decoding="async" src="images/blog/post-4.jpg" alt="Post Thumbnail">
+                        @if ($latestArticles->isNotEmpty())
+                            @foreach ($latestArticles as $latestArticle )
+                            <ul class="list-unstyled widget-list">
+                                <li class="d-flex widget-post align-items-center">
+                                    <a class="text-black" href="/blog/elements/">
+                                        <div class="widget-post-image flex-shrink-0 me-3">
+                                            <img class="rounded" loading="lazy" decoding="async" src="{{asset('storage/'.$latestArticle->image)}}" alt="Post Thumbnail">
+                                        </div>
+                                    </a>
+                                    <div class="flex-grow-1">
+                                        <h5 class="h6 mb-0"><a wire:navigate class="text-black" href="{{route('blogDetail',$latestArticle->id)}}">{{$latestArticle->title}}</a></h5>
+                                        <small>{{\Carbon\Carbon::parse($article->creted_at)
+                                                ->format('d M, Y')}}</small>
                                     </div>
-                                </a>
-                                <div class="flex-grow-1">
-                                    <h5 class="h6 mb-0"><a class="text-black" href="blog-details.html">Elements That You Can Use To Create A New Post On This Template.</a></h5>
-                                    <small>March 15, 2020</small>
-                                </div>
-                            </li>
-                        </ul>
-                        <ul class="list-unstyled widget-list">
-                            <li class="d-flex widget-post align-items-center">
-                                <a class="text-black" href="/blog/post-1/">
-                                    <div class="widget-post-image flex-shrink-0 me-3">
-                                        <img class="rounded" loading="lazy" decoding="async" src="images/blog/post-1.jpg" alt="Post Thumbnail">
-                                    </div>
-                                </a>
-                                <div class="flex-grow-1">
-                                    <h5 class="h6 mb-0"><a class="text-black" href="blog-details.html">Cheerful Loving Couple Bakers Drinking Coffee</a></h5>
-                                    <small>March 14, 2020</small>
-                                </div>
-                            </li>
-                        </ul>
-                        <ul class="list-unstyled widget-list">
-                            <li class="d-flex widget-post align-items-center">
-                                <a class="text-black" href="/blog/post-2/">
-                                    <div class="widget-post-image flex-shrink-0 me-3">
-                                        <img class="rounded" loading="lazy" decoding="async" src="images/blog/post-2.jpg" alt="Post Thumbnail">
-                                    </div>
-                                </a>
-                                <div class="flex-grow-1">
-                                    <h5 class="h6 mb-0"><a class="text-black" href="blog-details.html">Cheerful Loving Couple Bakers Drinking Coffee</a></h5>
-                                    <small>March 14, 2020</small>
-                                </div>
-                            </li>
-                        </ul>
+                                </li>
+                            </ul>
+                            @endforeach
+                        @endif
+                       
+                       
                     </div>
                     <!-- Social -->
                     
