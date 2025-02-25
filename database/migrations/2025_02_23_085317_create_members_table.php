@@ -16,12 +16,12 @@ return new class extends Migration
             $table->string('name');
             $table->string('designation');
             $table->string('fb_url')->nullable();
+            $table->string('insta_url')->nullable();
             $table->string('x_url')->nullable();
-            $table->string('linkdin')->nullable();
-            $table->string('github')->nullable();
-            $table->string('in_url')->nullable();
             $table->string('image')->nullable();
-            $table->integer('status')->default('1');
+            $table->integer('status')->default(1);
+
+
             $table->timestamps();
         });
     }

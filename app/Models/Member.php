@@ -12,11 +12,9 @@ class Member extends Model
     'name',
     'designation',
     'fb_url',
-    'in_url',
+    'insta_url',
     'x_url',
     'image',
     'status',
-    'linkdin',
-    'github',
    ];
 }

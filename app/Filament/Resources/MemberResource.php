@@ -32,12 +32,8 @@ class MemberResource extends Resource
                 TextInput::make('designation')->required(),
                 TextInput::make('fb_url')
                 ->url()->label('Facebook Url'),
-                TextInput::make('in_url')
+                TextInput::make('insta_url')
                 ->url()->label('Instagram Url'),
-                TextInput::make('github')
-                ->url()->label('Github Url'),
-                TextInput::make('linkdin')
-                ->url()->label('Linkdin Url'),
                 TextInput::make('x_url')
                 ->url()->label('X Url'),
                 Select::make('status')->options([
