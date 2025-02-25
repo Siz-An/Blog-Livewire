@@ -48,7 +48,7 @@
 
 					<li class="nav-item "><a wire:navigate class="nav-link " href="{{route('faq')}}">FAQ</a></li>
 				</ul>
-				<a href="#!" class="btn btn-outline-primary">Contact Us</a>				
+				<a href="{{route('contact')}}" wire:navigate  class="btn btn-outline-primary">Contact Us</a>				
 			</div>
 		</div>
 	</nav>
