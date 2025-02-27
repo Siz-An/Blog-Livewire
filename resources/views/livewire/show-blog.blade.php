@@ -5,9 +5,10 @@
                 <div class="col-8 mx-auto text-center">
                     <h2 class="mb-3 text-capitalize">Blog</h2>
                     <ul class="list-inline breadcrumbs text-capitalize" style="font-weight:500">
-                        <li class="list-inline-item"><a href="{{route('home')}}">Home</a>
+                        <li class="list-inline-item"><a href="{{route('home')}}" wire:navigate>Home</a>
                         </li>
-                        <li class="list-inline-item">/ &nbsp; <a href="{{route('blog')}}">Blog</a>
+                        <li class="list-inline-item">/ &nbsp;
+                            Blog
                         </li>
                     </ul>
                 </div>
@@ -85,26 +86,7 @@
                         @endif	
                         </ul>
                     </div>
-                    <!-- tags -->
-                    <div class="widget widget-tags">
-                        <h4 class="widget-title"><span>Tags</span></h4>
-                        <ul class="list-inline widget-list widget-list-inline taxonomies-list">
-                            <li class="list-inline-item"><a href="#!">Booth</a>
-                            </li>
-                            <li class="list-inline-item"><a href="#!">City</a>
-                            </li>
-                            <li class="list-inline-item"><a href="#!">Image</a>
-                            </li>
-                            <li class="list-inline-item"><a href="#!">New</a>
-                            </li>
-                            <li class="list-inline-item"><a href="#!">Photo</a>
-                            </li>
-                            <li class="list-inline-item"><a href="#!">Seasone</a>
-                            </li>
-                            <li class="list-inline-item"><a href="#!">Video</a>
-                            </li>
-                        </ul>
-                    </div>
+
                     <!-- latest post -->
                     <div class="widget">
                         <h5 class="widget-title"><span>Latest Article</span></h5>

@@ -8,7 +8,7 @@
 				<ul class="list-inline breadcrumbs text-capitalize" style="font-weight:500">
 					<li class="list-inline-item"><a wire:navigate href="{{route('home')}}">Home</a>
 					</li>
-					<li class="list-inline-item">/ &nbsp; <a wire:navigate href="{{route('servicePage')}}">Services</a>
+					<li class="list-inline-item">/ &nbsp; <a wire:navigate href="{{route('service',$service->id)}}">Services</a>
 					</li>
 					
 				</ul>

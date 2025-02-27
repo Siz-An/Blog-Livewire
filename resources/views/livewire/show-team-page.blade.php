@@ -77,7 +77,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row position-relative">
+            <div class="row position-relative justify-content-center">
                 @if ($members->isNotEmpty())
                 @foreach ($members as $member)
                 <div class="col-xl-3 col-lg-4 col-md-6 mt-4">
