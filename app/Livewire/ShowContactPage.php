@@ -27,7 +27,7 @@ class ShowContactPage extends Component
             'message'=> $this->message,
         ];
 
-        Mail::to('admin@gmail.com')->send(new ContactEmail($mailData));
+        Mail::to('sizanmahato@gmail.com')->send(new ContactEmail($mailData));
 
         session()->flash('success','Thanks for contacting, we will reach out to you as soon as possible');
 
