@@ -34,7 +34,7 @@
         </button>
         <ul id="nav-menu" class="hidden md:flex space-x-6 text-gray-700 font-medium">
             <li><a wire:navigate class="hover:text-primary transition" href="{{route('home')}}">Home</a></li>
-            <li><a wire:navigate class="hover:text-primary transition" href="{{route('page',1)}}">About Us</a></li>
+            <li><a wire:navigate class="hover:text-primary transition" href="{{route('page',5)}}">About Us</a></li>
             <li><a wire:navigate class="hover:text-primary transition" href="{{route('servicePage')}}">Services</a></li>
             <li><a wire:navigate class="hover:text-primary transition" href="{{route('team')}}">Our Team</a></li>
             <li><a wire:navigate class="hover:text-primary transition" href="{{route('blog')}}">Blogs</a></li>
@@ -63,7 +63,7 @@
         <div>
             <h5 class="text-primary text-lg font-semibold mb-4">Quick Links</h5>
             <ul class="space-y-2">
-                <li><a wire:navigate href="{{route('page',1)}}" class="hover:text-gray-400 transition">About Us</a></li>
+                <li><a wire:navigate href="{{route('page',5)}}" class="hover:text-gray-400 transition">About Us</a></li>
                 <li><a wire:navigate href="{{route('contact')}}" class="hover:text-gray-400 transition">Contact Us</a></li>
                 <li><a wire:navigate href="{{route('blog')}}" class="hover:text-gray-400 transition">Blog</a></li>
                 <li><a wire:navigate href="{{route('team')}}" class="hover:text-gray-400 transition">Team</a></li>
@@ -72,8 +72,8 @@
         <div>
             <h5 class="text-primary text-lg font-semibold mb-4">Legal</h5>
             <ul class="space-y-2">
-                <li><a wire:navigate href="{{route('page',3)}}" class="hover:text-gray-400 transition">Privacy Policy</a></li>
-                <li><a wire:navigate href="{{route('page',4)}}" class="hover:text-gray-400 transition">Terms & Conditions</a></li>
+                <li><a wire:navigate href="{{route('page',6)}}" class="hover:text-gray-400 transition">Privacy Policy</a></li>
+                <li><a wire:navigate href="{{route('page',7)}}" class="hover:text-gray-400 transition">Terms & Conditions</a></li>
             </ul>
         </div>
     </div>

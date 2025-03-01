@@ -50,7 +50,7 @@ class ArticleResource extends Resource
                 TextColumn::make('title'),
                 TextColumn::make('author'),
                 ImageColumn::make('image')->width(100),
-                TextColumn::make('content')->html(),
+                // TextColumn::make('content')->html(),
                 TextColumn::make('title'),
 
                 

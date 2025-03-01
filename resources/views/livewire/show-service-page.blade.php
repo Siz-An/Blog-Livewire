@@ -6,7 +6,7 @@
                     <h2 class="mb-3 text-3xl font-semibold">Our Services</h2>
                     <ul class="list-inline breadcrumbs text-capitalize font-medium">
                         <li class="inline-block">
-                            <a href="{{route('home')}}" wire:navigate class="text-primary hover:underline">Home</a>
+                            <a href="{{route('home')}}" wire:navigate >Home</a>
                         </li>
                         <li class="inline-block">/ &nbsp; Services</li>
                     </ul>

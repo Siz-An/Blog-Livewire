@@ -1,9 +1,9 @@
 <main>
-    <section class="page-header bg-tertiary">
-        <div class="container mx-auto">
+    <section class="page-header bg-tertiary py-12">
+        <div class="container mx-auto px-4">
             <div class="flex justify-center">
-                <div class="text-center w-full md:w-2/3">
-                    <h2 class="mb-3 text-capitalize text-2xl text-green-500">{{ $page->title }}</h2>
+                <div class="text-center w-full md:w-8/12">
+                    <h2 class="mb-3 text-3xl font-semibold">{{ $page->title }}</h2>
                     <ul class="list-inline breadcrumbs text-capitalize font-medium">
                         <li class="inline-block">
                             <a wire:navigate href="{{ route('home') }}">Home</a>
