@@ -17,13 +17,9 @@
                             $x=1;
                         @endphp
                         @foreach ($faqs as $faq)
-                        <div class="border-b border-gray-200">
+                        <div x-data="{ open: false }" class="border-b border-gray-200">
                             {{-- Question --}}
-                            <h2 class="flex justify-between items-center p-4 cursor-pointer"
-                                id="heading-{{$x}}" type="button"
-                                data-bs-toggle="collapse"
-                                data-bs-target="#collapse-{{$x}}" aria-expanded="true"
-                                aria-controls="collapse-{{$x}}">
+                            <h2 @click="open = !open" class="flex justify-between items-center p-4 cursor-pointer">
                                 <span class="text-lg">{{$faq->question}}</span>
                                 <span class="text-gray-500">
                                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -32,11 +28,8 @@
                                 </span>
                             </h2>
                             {{-- Answers --}}
-                            <div id="collapse-{{$x}}"
-                                class="collapse border-0"
-                                aria-labelledby="heading-{{$x}}"
-                                data-bs-parent="#accordionFAQ">
-                                <div class="p-4">{!!$faq->answer!!}</div>
+                            <div x-show="open" class="p-4">
+                                {!! $faq->answer !!}
                             </div>
                         </div>
                         @php
